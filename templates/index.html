@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Light Controller</title>
+	<link rel="stylesheet" type="text/css" href="/home/pi/Desktop/CLASSIFIED/web-server/templates/main.css">
+	<style>
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/******* HEADER *********/
+.header {
+	box-shadow: 0 0px 0px rgba(255, 0, 0, 1.0);
+	background-color: black;
+	text-align: center;
+}
+
+.header__logo {
+	padding: 0;
+	margin: 0;
+	width: 50px;
+	height: 50px;
+	vertical-align: middle;
+}
+
+@media (max-width: 400px) {
+	.header__logo {
+		//visibility: hidden;
+		display: none;
+	}
+}
+
+.header__title {
+	display: inline-block;
+	color: white;
+	text-shadow: 3px 3px red;
+	vertical-align: middle;
+}
+
+/******* NAVIGATION BAR *********/
+.nav {
+	background-color: green;
+	box-shadow: 0 2px 5px rgba(255, 0, 0, 1.0);
+}
+
+.nav__list {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+.nav__item {
+	display: inline-block;
+	width: 25%;
+	//line-height: 25px;
+	padding: 15px 15px;
+	text-align: center;
+}
+
+.nav a {
+	padding: 1em;
+	text-decoration: none;
+	color: white;
+}
+
+.nav a:hover {
+	background-color: black;
+	color: white;
+}
+
+/******* LIGHT **********/
+.content {
+	text-align: center;
+}
+
+.light {
+	text-align: center;
+	padding: 25px;
+	display: inline-block;
+}
+
+.button {
+	display: inline-block;
+	padding: 15px 25px;
+	text-align: center;
+	text-decoration: none;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 9px #999;
+	cursor: pointer;
+}
+
+.button:hover {	background-color: #3e8e41 }
+
+.button:active {
+	transform: translateY(4px);
+	background-color: #3e8341;
+	box-shadow: 0 5px #666;
+}
+
+
+
+	</style>
+</head>
+
+	<div class="header">
+		<div class="header__inner">
+			<img class="header__logo" src="{{ url_for('static',filename='Home.ico') }}" alt="" onerror="this.style.display='none'" />
+			<h1 class="header__title">
+				LIGHT CONTROLLER
+			</h1>
+		</div>
+	</div>
+
+	<nav id="drawer" class="nav">
+		<ul class="nav__list">
+			<li class="nav__item"><a href="index.html">HOME</a></li>
+			<li class="nav__item"><a href="#">ABOUT</a></li>
+		</ul>
+	</nav>
+
+	<main>
+		<section class="content">
+			<div>
+				<h2 class="light"> ROOM LIGHT</h2>
+				{% if _relay1 == 1 %}	<a href="/relay1/off" class="button" type="button"> TURN OFF </a>
+				{% else %}	<a href="/relay1/on" class="button" type="button"> TURN ON </a>
+				{% endif %}
+			<!-- 
+			<div>
+				<h2 class="light"> RED LED </h2>
+				{% if _ledRed == 1 %}	<a href="/ledRed/off" class="button" type="button"> TURN OFF </a>
+				{% else %}	<a href="/ledRed/on" class="button" type="button"> TURN ON </a>
+				{% endif %}
+			</div>
+			<div>
+				<h2 class="light"> GREEN LED </h2>
+				{% if _ledGreen == 1 %}	<a href="/ledGreen/off" class="button" type="button"> TURN OFF </a>
+				{% else %}	<a href="/ledGreen/on" class="button" type="button"> TURN ON </a>
+				{% endif %}				
+			</div>
+			<div>
+				<h2 class="light"> BLUE LED </h2>
+				{% if _ledBlue == 1 %}	<a href="/ledBlue/off" class="button" type="button"> TURN OFF </a>
+				{% else %}	<a href="/ledBlue/on" class="button" type="button"> TURN ON </a>
+				{% endif %}				
+			</div>
+			-->
+		</section>
+	</main>	
+</html>
